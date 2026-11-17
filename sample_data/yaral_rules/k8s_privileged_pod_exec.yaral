@@ -1,0 +1,18 @@
+rule k8s_privileged_pod_exec_shell {
+  meta:
+    author = "Detection Engineering"
+    description = "Detects interactive shell spawned inside privileged container"
+    mitre_attack_tactic = "Execution"
+    mitre_attack_technique = "T1609"
+    severity = "CRITICAL"
+
+  events:
+    $e.metadata.log_type = "EDR_PROCESS_TELEMETRY"
+    $e.target.process.file.full_path = /\/bin\/(ba)?sh/ nocase
+
+  outcome:
+    $event_count = count($e.metadata.id)
+
+  condition:
+    $e
+}

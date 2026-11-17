@@ -1,0 +1,18 @@
+rule cloud_iam_service_account_key_created {
+  meta:
+    author = "Detection Engineering"
+    description = "Detects service account key creation in Cloud IAM audit logs"
+    mitre_attack_tactic = "Persistence"
+    mitre_attack_technique = "T1098.001"
+    severity = "HIGH"
+
+  events:
+    $e.metadata.log_type = "CLOUD_AUDIT_IAM"
+    $e.metadata.product_event_type = "CreateServiceAccountKey"
+
+  outcome:
+    $event_count = count_distinct($e.metadata.id)
+
+  condition:
+    $e
+}

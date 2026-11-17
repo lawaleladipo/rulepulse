@@ -1,0 +1,99 @@
+{
+  "weekday": "tuesday",
+  "rules_telemetry": [
+    {
+      "rule_id": "ru_1001",
+      "rule_name": "iam_admin_role_grant_unusual_runner",
+      "weekly_counts": [12, 14, 11, 13, 15, 12, 14, 13, 12, 11, 14, 13],
+      "current_count": 96
+    },
+    {
+      "rule_id": "ru_1002",
+      "rule_name": "k8s_privileged_pod_exec_shell",
+      "weekly_counts": [2, 3, 2, 1, 2, 3, 2, 2, 1, 3, 2, 2],
+      "current_count": 2
+    },
+    {
+      "rule_id": "ru_1003",
+      "rule_name": "idp_impossible_travel_sso_login",
+      "weekly_counts": [18, 20, 17, 21, 19, 18, 22, 19, 20, 18, 19, 21],
+      "current_count": 23
+    },
+    {
+      "rule_id": "ru_1004",
+      "rule_name": "aws_cloudtrail_root_console_signin",
+      "weekly_counts": [0, 1],
+      "current_count": 1
+    }
+  ],
+  "log_sources": [
+    {
+      "log_type": "CLOUD_AUDIT_IAM",
+      "volume_by_weekday": {
+        "tuesday": [145000, 151000, 148000, 149500, 152000, 147000],
+        "sunday": [18000, 19500, 17200, 18900, 18100, 17800]
+      },
+      "current_volume": 0,
+      "latency_minutes_history": [2.1, 2.4, 1.9, 2.2, 2.5, 2.0, 2.3],
+      "current_lag_minutes": 2.2
+    },
+    {
+      "log_type": "SASE_DLP_EVENTS",
+      "volume_by_weekday": {
+        "tuesday": [82000, 85000, 80500, 84000, 83000, 81500],
+        "sunday": [9100, 8800, 9400, 9000, 8950, 9200]
+      },
+      "current_volume": 83500,
+      "latency_minutes_history": [28.0, 31.0, 29.5, 30.0, 27.5, 32.0, 29.0],
+      "current_lag_minutes": 195.0
+    },
+    {
+      "log_type": "EDR_PROCESS_TELEMETRY",
+      "volume_by_weekday": {
+        "tuesday": [620000, 635000, 610000, 628000, 640000, 618000],
+        "sunday": [410000, 405000, 420000, 415000, 408000, 412000]
+      },
+      "current_volume": 629000,
+      "latency_minutes_history": [1.1, 1.3, 1.2, 1.0, 1.4, 1.2, 1.1],
+      "current_lag_minutes": 1.2
+    }
+  ],
+  "rule_dispositions": [
+    {
+      "rule_id": "ru_1001",
+      "rule_name": "iam_admin_role_grant_unusual_runner",
+      "closed_cases": 64,
+      "true_positives": 0,
+      "escalated_cases": 1,
+      "exclusion_clauses": 9,
+      "prior_exclusion_clauses": 5
+    },
+    {
+      "rule_id": "ru_1002",
+      "rule_name": "k8s_privileged_pod_exec_shell",
+      "closed_cases": 18,
+      "true_positives": 14,
+      "escalated_cases": 15,
+      "exclusion_clauses": 1,
+      "prior_exclusion_clauses": 1
+    },
+    {
+      "rule_id": "ru_1003",
+      "rule_name": "idp_impossible_travel_sso_login",
+      "closed_cases": 40,
+      "true_positives": 6,
+      "escalated_cases": 9,
+      "exclusion_clauses": 2,
+      "prior_exclusion_clauses": 2
+    }
+  ],
+  "quota": {
+    "daily_quota_tb": 2.5,
+    "daily_tb_series": [1.72, 1.78, 1.85, 1.93, 2.01, 2.11, 2.21],
+    "source_daily_deltas_gb": {
+      "K8S_CONTAINER_STDOUT": 84.5,
+      "WAF_ACCESS_LOGS": 36.2,
+      "EDR_PROCESS_TELEMETRY": 11.0
+    }
+  }
+}

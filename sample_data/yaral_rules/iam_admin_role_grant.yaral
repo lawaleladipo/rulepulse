@@ -1,0 +1,16 @@
+rule iam_admin_role_grant_unusual_runner {
+  meta:
+    author = "Detection Engineering"
+    description = "Legacy noisy rule missing ATT&CK tags and using reserved outcome identifier"
+    severity = "MEDIUM"
+
+  events:
+    $e.metadata.log_type = "EDR_PROCESS_TELEMETRY"
+    $e.target.process.command_line = /terraform apply/i
+
+  outcome:
+    $count = count($e.metadata.id)
+
+  condition:
+    $e
+}
